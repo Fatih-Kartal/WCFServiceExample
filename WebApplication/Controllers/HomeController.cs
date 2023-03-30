@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ServiceReference;
 
 namespace WebApplication.Controllers
 {
@@ -15,7 +16,12 @@ namespace WebApplication.Controllers
         [HttpGet]
         public string Index()
         {
-            return "Hello";
+            WebServiceSoap ws = new WebServiceSoapClient(WebServiceSoapClient.EndpointConfiguration.WebServiceSoap);
+
+            var request = new HelloRequest(new HelloRequestBody() { name = "Fatih" });
+            var response = ws.HelloAsync(request);
+
+            return response.Result.Body.HelloResult;
         }
     }
 }

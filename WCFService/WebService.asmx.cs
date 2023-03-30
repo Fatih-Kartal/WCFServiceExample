@@ -9,9 +9,8 @@ namespace WCFService
     // [System.Web.Script.Services.ScriptService]
     public class WebService : System.Web.Services.WebService
     {
-
         [WebMethod]
-        public string HelloWorld(string name)
+        public string Hello(string name)
         {
             return string.Format("Hello {0}", name);
         }
