@@ -117,6 +117,9 @@ namespace ServiceReference
                 base(WebServiceSoapClient.GetBindingForEndpoint(endpointConfiguration), WebServiceSoapClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
+
+            this.Endpoint.EndpointBehaviors.Add(new WebApplication.Helper.LoggingEndpointBehaviour());
+
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
